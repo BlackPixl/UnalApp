@@ -1,0 +1,164 @@
+{
+  "name":"Javier",
+  "academicHistory":{
+    "PAPA":3.3,
+    "courses":[
+      {
+        "name":"INGENIERÍA DE REQUISITOS",
+        "code":"3007852",
+        "grade":4.0,
+        "credits":3
+      },
+      {
+        "name":"INVESTIGACIÓN DE OPERACIONES I",
+        "code":"3007...",
+        "grade":3.3,
+        "credits":3
+      },
+      {
+        "name":"PROGRAMACIÓN LÓGICA Y FUNCIONAL",
+        "code":"3007743",
+        "grade":3.5,
+        "credits":3
+      },
+      {
+        "name":"CÁLCULO INTEGRAL",
+        "code":"1000005-M",
+        "grade":2.7,
+        "credits":4
+      },
+      {
+        "name":"INGENIERÍA DE SOFTWARE",
+        "code":"3007333",
+        "grade":4.3,
+        "credits":3
+      },
+      {
+        "name":"TEORÍA DE LA GESTIÓN",
+        "code":"3007333",
+        "grade":4.9,
+        "credits":3
+      },
+      {
+        "name":"CÁLCULO INTEGRAL",
+        "code":"1000005-M",
+        "grade":1.8,
+        "credits":4
+      },
+      {
+        "name":"MATEMÁTICAS DISCRETAS",
+        "code":"3006906",
+        "grade":3.6,
+        "credits":4
+      },
+      {
+        "name":"Estadística Descriptiva y Exploratoria",
+        "code":"3006927",
+        "grade":4.8,
+        "credits":4
+      },
+      {
+        "name":"CÁLCULO INTEGRAL",
+        "code":"1000005-M",
+        "grade":0.9,
+        "credits":4
+      },
+      {
+        "name":"FÍSICA MECÁNICA",
+        "code":"1000019-M",
+        "grade":2.6,
+        "credits":4
+      },
+      {
+        "name":"PROGRAMACIÓN ORIENTADA A OBJETOS",
+        "code":"INDEF",
+        "grade":3.2,
+        "credits":3
+      },
+      {
+        "name":"CÁLCULO DIFERENCIAL",
+        "code":"1000004-M",
+        "grade":3.3,
+        "credits":4
+      },
+      {
+        "name":"ÁLGEBRA LINEAL",
+        "code":"1000003-M",
+        "grade":3.4,
+        "credits":4
+      },
+      {
+        "name":"Introducción a los Estudios de Género I",
+        "code":"3008873",
+        "grade":4.2,
+        "credits":3
+      },
+      {
+        "name":"CÁLCULO DIFERENCIAL",
+        "code":"1000004-M",
+        "grade":2.3,
+        "credits":4
+      },
+      {
+        "name":"GEOMETRÍA VECTORIAL Y ANALÍTICA",
+        "code":"1000008-M",
+        "grade":3.1,
+        "credits":4
+      },
+      {
+        "name":"ESTRUCTURA DE DATOS",
+        "code":"3007741",
+        "grade":3.1,
+        "credits":3
+      },
+      {
+        "name":"TEORÍA DE LA GESTIÓN",
+        "code":"3007333",
+        "grade":2.8,
+        "credits":3
+      },
+      {
+        "name":"FUNDAMENTOS DE PROGRAMACIÓN",
+        "code":"3007...",
+        "grade":4.5,
+        "credits":3
+      },
+      {
+        "name":"GEOMETRÍA VECTORIAL Y ANALÍTICA",
+        "code":"1000008-M",
+        "grade":2.4,
+        "credits":4
+      },
+      {
+        "name":"MATEMÁTICAS BÁSICAS",
+        "code":"1000001-M",
+        "grade":3.0,
+        "credits":4
+      },
+      {
+        "name":"Inducción y Preparación para la Vida Universitaria",
+        "code":"indef",
+        "grade":4.9,
+        "credits":3
+      },
+      {
+        "name": "Arquitectura de Computadores",
+        "code": "nodef",
+        "grade":3.9,
+        "credits":3
+      },
+      {
+        "name": "Calculo INtegfral",
+        "code": "nodef",
+        "grade":3.6,
+        "credits":4
+      },
+      {
+        "name": "apun",
+        "code": "nodef",
+        "grade":4.4,
+        "credits":4
+      }
+    ]
+  }
+}
