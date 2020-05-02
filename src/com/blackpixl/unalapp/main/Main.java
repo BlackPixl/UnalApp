@@ -1,7 +1,9 @@
 package com.blackpixl.unalapp.main;
 
+import com.blackpixl.unalapp.connection.Connection;
 import com.blackpixl.unalapp.jsonParser.JsonParser;
 import com.blackpixl.unalapp.user.User;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +17,11 @@ public class Main {
         );
         int option = input.nextInt();
         switch(option){
-            case 1:login();
+            case 1:try{
+                login(input);
+                }catch (IOException e){
+                e.printStackTrace();
+                }
                 break;
             case 2: loadState();
             case 3:queryCitation();
@@ -25,8 +31,14 @@ public class Main {
         }
     }
 
-    public static void login(){
-        System.out.println("Funcionalidad bajo construcción");
+    public static void login(Scanner input) throws IOException {
+        System.out.print("Ingresa tu usuario: ");
+        String user = input.next();
+        System.out.print("Ingresa tu contraseña: ");
+        String password = input.next();
+        Connection connection = new Connection(user, password);
+        System.out.println(connection.getMainPage());
+        Connection.close();
     }
 
     public static void loadState(){
@@ -45,5 +57,9 @@ public class Main {
 
     public static void querySchedule(){
         System.out.println("Funcionalidad bajo construcción");
+    }
+
+    public static void printOptions(){
+
     }
 }
