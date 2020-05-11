@@ -1,8 +1,9 @@
 package com.blackpixl.unalapp.main;
 
-import com.blackpixl.unalapp.connection.Connection;
+import com.blackpixl.unalapp.browser.Browser;
 import com.blackpixl.unalapp.jsonParser.JsonParser;
 import com.blackpixl.unalapp.user.User;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -10,7 +11,13 @@ public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         System.out.println("Bienvenido");
-        System.out.println("[1]. Login." +
+        Browser con  = new Browser();
+        try {
+            System.out.println(con.login().html());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*System.out.println("[1]. Login." +
                 "\n[2]. Cargar historia académica." +
                 "\n[3]. Consultar citación." +
                 "\n[4]. Consultar horario."
@@ -28,19 +35,19 @@ public class Main {
                 break;
             case 4:querySchedule();
                 break;
-        }
+        }*/
     }
-
+/*
     public static void login(Scanner input) throws IOException {
         System.out.print("Ingresa tu usuario: ");
         String user = input.next();
         System.out.print("Ingresa tu contraseña: ");
         String password = input.next();
         Connection connection = new Connection(user, password);
-        System.out.println(connection.getMainPage());
+        //System.out.println(connection.getMainPage());
         Connection.close();
     }
-
+*/
     public static void loadState(){
         User user = JsonParser.load();
         System.out.println(user.getName());
