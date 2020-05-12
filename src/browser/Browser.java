@@ -1,12 +1,12 @@
-package com.blackpixl.unalapp.browser;
+package browser;
 
-import com.blackpixl.unalapp.course.Course;
+import course.Course;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Browser {
 
@@ -21,7 +21,7 @@ public class Browser {
         webClient.getOptions().setCssEnabled(false);
     }
 
-    public void login(String user, String password){
+    public void login(String user, String password) throws IOException{
         HtmlPage loginPage = null;
 
         try {
@@ -32,43 +32,27 @@ public class Browser {
 
         assert loginPage != null;
         HtmlForm loginForm = loginPage.getFormByName("frmLogin");
-        HtmlInput userInput = loginForm.getInputByName("email");
+        HtmlInput userInput = loginForm.getInputByName("username");
         userInput.setValueAttribute(user);
         HtmlInput passwordInput = loginForm.getInputByName("password");
         passwordInput.setValueAttribute(password);
-        //HtmlInput submit = loginForm.getInputByName("submit");
-        //mainPage = submit.click();
-        HtmlButton submit = loginForm.getButtonByName("submit");
-
-        try {
-            mainPage = submit.click();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        HtmlInput submit = loginForm.getInputByName("submit");
+        mainPage = submit.click();
+        HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::head").click();
+        System.out.println(selectionMenu.asXml());
     }
 
-    public ArrayList<Course> retrieveCourses(){
+    public ArrayList<Course> retrieveCourses()throws IOException{
+        HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::head").click();
+        HtmlPage academicHistory = selectionMenu.getElementById("pt1:men-portlets:j_idt1").click();
+        webClient.waitForBackgroundJavaScript(5000);
         ArrayList<Course> courses = new ArrayList<>();
-        mainPage.get
+        List<DomElement> htmlCourses = mainPage.getElementsById("pt1:men-portlets:sdi::head");
         return courses;
     }
 
     public void logout(){
         webClient.close();
     }
+
 }
-
-/*
-        //HtmlPage loginPage = webClient.getPage("https://sia.unal.edu.co/ServiciosApp");
-        //HtmlForm loginForm = loginPage.getFormByName("frmLogin");
-        //HtmlInput userInput = loginForm.getInputByName("username");
-        //userInput.setValueAttribute(user);
-        //HtmlInput passwordInput = loginForm.getInputByName("password");
-        //passwordInput.setValueAttribute(password);
-        //HtmlInput submit = loginForm.getInputByName("submit");
-        //mainPage = submit.click();
-
-    public static void close(){
-        webClient.close();
-    }*/

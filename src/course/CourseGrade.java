@@ -1,4 +1,4 @@
-package com.blackpixl.unalapp.course;
+package course;
 
 public class CourseGrade {
     public CourseGrade(float grade, byte percentage) {

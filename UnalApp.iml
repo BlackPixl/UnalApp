@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Plugins/htmlunit-2.39.0-OSGi.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Libraries/gson-2.8.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,25 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/19.0.0/annotations-19.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Plugins/gson-2.8.6.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Plugins/jsoup-1.13.1.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Libraries/htmlunit-2.40.0-OSGi.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

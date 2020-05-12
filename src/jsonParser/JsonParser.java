@@ -1,6 +1,6 @@
-package com.blackpixl.unalapp.jsonParser;
+package jsonParser;
 
-import com.blackpixl.unalapp.user.User;
+import user.User;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.nio.file.Files;

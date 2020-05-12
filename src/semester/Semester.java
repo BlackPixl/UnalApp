@@ -1,8 +1,4 @@
-package com.blackpixl.unalapp.semester;
-
-import com.blackpixl.unalapp.course.Course;
-
-import java.util.ArrayList;
+package semester;
 
 public class Semester {
     /*public Semester(String id, ArrayList<Course> courses){

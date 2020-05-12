@@ -1,6 +1,6 @@
-package com.blackpixl.unalapp.user;
+package user;
 
-import com.blackpixl.unalapp.course.Course;
+import course.Course;
 
 import java.util.ArrayList;
 

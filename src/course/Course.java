@@ -1,4 +1,4 @@
-package com.blackpixl.unalapp.course;
+package course;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class Course {
         this.code = code;
         this.grade = grade;
         this.credits = credits;
-        this.gradesArray = new ArrayList<CourseGrade>(0);
+        this.gradesArray = new ArrayList<>(0);
     }
 
     private int credits;

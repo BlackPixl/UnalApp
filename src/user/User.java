@@ -1,11 +1,5 @@
 
-package com.blackpixl.unalapp.user;
-
-import com.blackpixl.unalapp.course.Course;
-import com.blackpixl.unalapp.semester.Semester;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+package user;
 
 public class User {
     public User(String name) {

@@ -1,8 +1,8 @@
-package com.blackpixl.unalapp.main;
+package main;
 
-import com.blackpixl.unalapp.browser.Browser;
-import com.blackpixl.unalapp.jsonParser.JsonParser;
-import com.blackpixl.unalapp.user.User;
+import browser.Browser;
+import jsonParser.JsonParser;
+import user.User;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,12 +11,17 @@ public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         System.out.println("Bienvenido");
+        System.out.println("usuario");
+        String user = input.next();
+        System.out.println("contraseña");
+        String password = input.next();
         Browser con  = new Browser();
         try {
-            System.out.println(con.login().html());
+            con.login(user, password);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        con.logout();
         /*System.out.println("[1]. Login." +
                 "\n[2]. Cargar historia académica." +
                 "\n[3]. Consultar citación." +
