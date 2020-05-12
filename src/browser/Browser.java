@@ -25,7 +25,11 @@ public class Browser {
         HtmlPage loginPage = null;
 
         try {
-            loginPage = webClient.getPage("http://localhost:4000/users/signin");
+            loginPage = webClient.getPage("https://sia.unal.edu.co/ServiciosApp/");
+            System.out.println("\n*******************************\nloading LoginPage");
+            webClient.waitForBackgroundJavaScript(5000);
+            System.out.println("\n*******************************\nloaded LoginPage:\n*******************************\n");
+            System.out.println(loginPage.asXml());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,8 +42,11 @@ public class Browser {
         passwordInput.setValueAttribute(password);
         HtmlInput submit = loginForm.getInputByName("submit");
         mainPage = submit.click();
-        HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::head").click();
+        HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::disAcr").click();
+        webClient.waitForBackgroundJavaScript(2000);
+        System.out.println("\n*******************************\nSelection Menu:\n*******************************\n");
         System.out.println(selectionMenu.asXml());
+        logout();
     }
 
     public ArrayList<Course> retrieveCourses()throws IOException{

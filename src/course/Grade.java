@@ -1,14 +1,14 @@
 package course;
 
-public class CourseGrade {
-    public CourseGrade(float grade, byte percentage) {
+public class Grade {
+    public Grade(float grade, byte percentage) {
         this.grade = grade;
         this.percentage = percentage;
     }
 
     String name = "testName";
 
-    public CourseGrade(byte percentage){
+    public Grade(byte percentage){
         this.grade = 0;
         this.percentage = percentage;
     }
