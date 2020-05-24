@@ -19,7 +19,7 @@ public class Main {
         int option = input.nextInt();
         switch(option){
             case 1:
-                System.out.print("Ingresa tu usuario: ");
+                /*System.out.print("Ingresa tu usuario: ");
                 String user = input.next();
                 System.out.print("Ingresa tu contraseña: ");
                 String password = input.next();
@@ -29,6 +29,12 @@ public class Main {
                     con.logout();
                 }catch (IOException e){
                 e.printStackTrace();
+                }*/
+                Browser con = new Browser();
+                try{
+                    con.retrieveCourses();
+                } catch (IOException e){
+                    e.printStackTrace();
                 }
                 break;
             case 2: loadState();
