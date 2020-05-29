@@ -1,6 +1,7 @@
 package browser;
 
 import course.Course;
+import course.CurrentCourse;
 import jsonParser.JsonParser;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -55,22 +56,23 @@ public class Browser {
         System.out.println(academicHistory.asXml());
     }
 
-    public void retrieveCourses() throws IOException {
-        /*HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::head").click();
-        HtmlPage academicHistory = selectionMenu.getElementById("pt1:men-portlets:j_idt1").click();
-        webClient.waitForBackgroundJavaScript(5000);*/
+    public AcademicHistory retrieveAcademicHistory() throws IOException {
+
+        //TODO: Connect with real webClient
+
         String path = "file:\\\\\\\\C:\\\\Users\\\\javi-\\\\Documents\\\\UnalApp\\\\Portal de Servicios Académicos3.htm";
-        //file:///C:/Users/javi-/Documents/UnalApp/Portal%20de%20Servicios%20Acad%C3%A9micos3.htm
-        System.out.println(path);
+
         webClient.getOptions().setJavaScriptEnabled(false);
         HtmlPage academicHistory = webClient.getPage(path);
-        //List<DomElement> courses = academicHistory.getByXPath("//tr[contains(@class, 'af_table_data-row')]");
+
         List<DomElement> nombres = academicHistory.getByXPath("//td[contains(@id, 'pt1:r1:1:t17:0:c24')]");
         List<DomElement> creditos = academicHistory.getByXPath("//td[contains(@id, 'pt1:r1:1:t17:0:c25')]");
         List<DomElement> tipologia = academicHistory.getByXPath("//td[contains(@id, 'pt1:r1:1:t17:0:c26')]");
         List<DomElement> semestre = academicHistory.getByXPath("//td[contains(@id, 'pt1:r1:1:t17:0:c27')]");
         List<DomElement> calificacion = academicHistory.getByXPath("//td[contains(@id, 'pt1:r1:1:t17:0:c23')]");
+
         ArrayList<Course> courses = new ArrayList<>();
+
         for (int i = 0; i < nombres.size(); i++) {
             String nombre = nombres.get(i).getTextContent();
             String credits = creditos.get(i).getTextContent();
@@ -88,8 +90,28 @@ public class Browser {
                     type,
                     tipo));
         }
-        User usr = new User("testName", new AcademicHistory(courses));
-        JsonParser.saveFile(usr);
+
+        return new AcademicHistory(courses);
+    }
+
+    public ArrayList<CurrentCourse> retrieveCurrentCourses() throws IOException {
+        //(1) - nota-cuerpo af_panelGroupLayout || salto nota-listado af_panelGroupLayout
+        //(2) - nota-nombre-asignatura af_panelGroupLayout && nota-calificacion-observacion af_panelGroupLayout
+        //(3) -      ^^^^^^^^^^^^^^^^^                             ^^^^^^^^^^^^
+        String path = "file:\\\\\\\\C:\\\\Users\\\\javi-\\\\Documents\\\\UnalApp\\\\Portal de Servicios Académicos5.htm";
+        webClient.getOptions().setJavaScriptEnabled(false);
+        HtmlPage current = webClient.getPage(path);
+        List<DomElement> elems = current.getByXPath("//span[contains(@class, 'salto nota-listado af_panelGroupLayout')]");
+        List<DomElement> elems1 = elems.get(0).getByXPath("//span[contains(@class, 'nota-nombre-asignatura af_panelGroupLayout')]");
+        List<DomElement> elems2 = elems.get(0).getByXPath("//span[contains(@class, 'nota-calificacion-observacion af_panelGroupLayout')]");
+        ArrayList<CurrentCourse> currentCourses = new ArrayList<>();
+        for (int i = 0; i < elems1.size(); i++) {
+            String nombre = elems1.get(i).getTextContent();
+            String codigo = getFromString(nombre,"\\([0-9]+\\-?[a-zA-Z]?\\)");
+            String calific = getFromString(elems2.get(i).getTextContent(),"[0-9]\\.[0-9]+");
+            currentCourses.add(new CurrentCourse(nombre, codigo, calific));
+        }
+        return currentCourses;
     }
 
     public void logout(){
@@ -112,8 +134,18 @@ public class Browser {
         if (matcher.find()) {
             matchedPattern = matcher.group();
         } else {
-            matchedPattern = "Error";
+            matchedPattern = "N/A";
         }
         return matchedPattern;
     }
 }
+
+//TODO: A METHOD TO DEAL WITH LISTS AND ITS CONTENTS.
+
+/*  OLD "RETRIEVEACADEMICHISTORY()" CODE
+
+    HtmlPage selectionMenu = mainPage.getElementById("pt1:men-portlets:sdi::head").click();
+    HtmlPage academicHistory = selectionMenu.getElementById("pt1:men-portlets:j_idt1").click();
+    webClient.waitForBackgroundJavaScript(5000);
+
+ */

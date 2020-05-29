@@ -9,6 +9,11 @@ public class AcademicHistory {
     private Double PAPA;
     final private ArrayList<Course> courses;
 
+    public AcademicHistory(){
+        this.PAPA = 0.0;
+        this.courses = null;
+    }
+
     public AcademicHistory(ArrayList<Course> courses){
         this.courses = courses;
         int credits = 0;
@@ -16,7 +21,7 @@ public class AcademicHistory {
 
         for (Course c:
              courses) {
-            if (!(c.getGrade().equals("Error"))){
+            if (!(c.getGrade().equals("N/A"))){
                 gradeWeighed += Float.parseFloat(c.getGrade())*c.getCredits();
                 credits += c.getCredits();
             }
