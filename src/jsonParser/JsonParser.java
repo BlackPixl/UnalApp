@@ -1,6 +1,6 @@
 package jsonParser;
 
-import user.User;
+import course.Course;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,20 +9,9 @@ import java.nio.file.Paths;
 
 public class JsonParser{
 
-    public static User load(){
-        String raw = "";
-        try {
-            raw = readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void saveFile(Course[] courses){
         Gson gson = new Gson();
-        return gson.fromJson(raw, User.class);
-    }
-
-    public static void saveFile(User user){
-        Gson gson = new Gson();
-        String rawJson = gson.toJson(user);
+        String rawJson = gson.toJson(courses);
         try{
             writeFile(rawJson);
         }catch(IOException e){

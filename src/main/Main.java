@@ -1,13 +1,8 @@
 package main;
 
-import browser.Browser;
-import course.CurrentCourse;
-import jsonParser.JsonParser;
-import user.AcademicHistory;
-import user.User;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
+import academicHistory.GsonProcessor;
+import academicHistory.AcademicHistory;
 
 public class Main {
 
@@ -15,16 +10,14 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Bienvenido!\n");
-        System.out.println("[1]. Login." +
-                "\n[2]. Cargar historia académica." +
-                "\n[3]. Consultar citación." +
-                "\n[4]. Buscador de Cursos."
-        );
-
-        int option = input.nextInt();
+        GsonProcessor academicHistoryProcessor = new GsonProcessor();
+        AcademicHistory academicHistory = new AcademicHistory(academicHistoryProcessor);
+        System.out.println(academicHistory.CalculatePAPA());
+        //int option = input.nextInt();
+        /*
         switch(option){
             case 1:
-                /*System.out.print("Ingresa tu usuario: ");
+                System.out.print("Ingresa tu usuario: ");
                 String user = input.next();
                 System.out.print("Ingresa tu contraseña: ");
                 String password = input.next();
@@ -34,7 +27,8 @@ public class Main {
                     con.logout();
                 }catch (IOException e){
                 e.printStackTrace();
-                }*/
+                }
+
 
                 Browser con = new Browser();
                 AcademicHistory ah = null;
@@ -56,17 +50,20 @@ public class Main {
                 User user = new User("testName", ah, cc);
                 JsonParser.saveFile(user);
 
+                System.out.println("Not avaliable.");
                 break;
             case 2:
                 User usr = loadState();
                 break;
-            case 3:queryCitation();
+            case 3: fetchCitation();
                 break;
-            case 4:queryCourses();
+            case 4: fetchCourses();
                 break;
-        }
-    }
 
+
+        }*/
+    }
+/*
     public static User loadState(){
         User user = JsonParser.load();
         System.out.println(user.getName());
@@ -78,12 +75,12 @@ public class Main {
         return user;
     }
 
-    public static void queryCitation(){
-        System.out.println("Funcionalidad bajo construcción");
+    public static void fetchCitation(){
+        System.out.println("Not avaliable.");
     }
 
-    public static void queryCourses(){
-        System.out.println("Funcionalidad bajo construcción");
-    }
+    public static void fetchCourses(){
+        System.out.println("Not avaliable.");
+    }*/
 
 }

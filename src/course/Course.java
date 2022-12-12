@@ -6,7 +6,7 @@ public class Course {
     private final String name;
     private final String code;
     private int credits;
-    private String finalGrade;
+    private String grade;
     private String semester;
     private String type;
     private String state;
@@ -16,16 +16,23 @@ public class Course {
         this.code = code;
     }
 
+    public Course(String name, String code, String grade, String credits) {
+        this.name = name;
+        this.code = code;
+        this.grade = grade;
+        this.credits = Integer.parseInt(credits);
+    }
+
     public Course(String name, String code, String grade){
         this.name = name;
         this.code = code;
-        this.finalGrade = grade;
+        this.grade = grade;
     }
 
     public Course(String name, String code, String grade, int credits, String semester, String type, String state){
         this.name = name;
         this.code = code;
-        this.finalGrade = grade;
+        this.grade = grade;
         this.credits = credits;
         this.semester = semester;
         this.type = type;
@@ -33,7 +40,7 @@ public class Course {
     }
 
     public String getGrade(){
-        return this.finalGrade;
+        return this.grade;
     }
 
     public String getName(){
